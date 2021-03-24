@@ -5,9 +5,17 @@ const container = document.querySelector(".container");
 let numSquares = 0;
 let squareSquared = 0;
 function askNmbSquares() {
-    numSquares = prompt("Pick no. of rows/columns you want to Sketch");
-    squareSquared = numSquares ** 2;
-    grid();
+    numSquares = prompt("Pick number of rows/columns for your Sketchboard");
+    if (isNaN(numSquares)) {
+        alert("You have to pick a number!");
+        askNmbSquares();
+    } else if (numSquares > 50) {
+        alert("Please choose a value of 50 or lower");
+        askNmbSquares();
+    } else {
+        squareSquared = numSquares ** 2;
+        grid();
+    }
 }
 
 // Functie maakt aantal squares als div
